@@ -16,7 +16,7 @@ function Footer() {
       <br></br>
       <p className="footer-contact">
         <i className="fas fa-envelope" style={{ fontSize: '0.85rem', marginRight: '6px' }}></i>
-        ashishn0255 [at] gmail [dot] com
+        ashishn0522 [at] gmail [dot] com
       </p>
 
     </footer>
