@@ -25,7 +25,7 @@ function App() {
       }, 100);
     }
   }, [showIntro]);
-  
+
   const startApp = async (inputCity) => {
     const cityName = inputCity.trim();
     if (!cityName) return alert("Please enter a city");

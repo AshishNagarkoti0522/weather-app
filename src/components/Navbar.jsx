@@ -8,6 +8,16 @@ function Navbar({ startApp, resetWeather, className }) {
     if (cityInput.trim() !== "") {
       startApp(cityInput);
       setCityInput("");
+
+      setTimeout(() => {
+        const main = document.querySelector("main");
+        if (main) {
+          main.scrollIntoView({ behavior: "smooth", block: "start" });
+        } else {
+          // fallback if main not found
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+      }, 300);
     }
   };
 

@@ -2,6 +2,7 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
+  scroll-behavior: smooth;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   display: flex;
   flex-direction: column;
@@ -10,7 +11,7 @@ html, body {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  background-attachment: fixed;
+  background-attachment: scroll;
   transition: background-image 0.8s ease-in-out, background-color 0.8s ease-in-out;
   overflow-x: hidden;
 }
@@ -42,9 +43,8 @@ html.dark-mode, body.dark-mode {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  background-attachment: fixed;
+  background-attachment: scroll;
   color: #f1f1f1;
-  overflow-x: hidden;
 }
 
 body.dark-mode {
