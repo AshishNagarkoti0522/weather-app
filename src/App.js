@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import ThemeToggle from './components/ThemeToggle';
 import IntroScreen from './components/IntroScreen';
 import WeatherDisplay from './components/WeatherDisplay';
 import Footer from './components/Footer';
 import './index.css';
+
 
 const weatherAPIKey = "6df2361bc8mshb9cc009348e5f7bp14f854jsn00f7237528e9";
 const geoAPIKey = "b54dd9fab610407b804b7c8dbed30a69";
@@ -13,7 +14,18 @@ function App() {
   const [weatherData, setWeatherData] = useState(null);
   const [city, setCity] = useState("");
   const [showIntro, setShowIntro] = useState(true);
-
+  
+  useEffect(() => {
+    if (showIntro) {
+      setTimeout(() => {
+        const intro = document.getElementById("introScreen");
+        if (intro) {
+          intro.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }, 100);
+    }
+  }, [showIntro]);
+  
   const startApp = async (inputCity) => {
     const cityName = inputCity.trim();
     if (!cityName) return alert("Please enter a city");

@@ -11,9 +11,16 @@ function Navbar({ startApp, resetWeather, className }) {
     }
   };
 
+  const handleLogoClick = () => {
+    resetWeather();
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: "smooth" }); // thoda delay se scroll
+    }, 50);
+  };
+
   return (
     <nav id="navbar" className={className}>
-      <div id="logo" onClick={resetWeather}>Weather App</div>
+      <div id="logo" onClick={handleLogoClick}>Weather App</div>
       
       <form id="getWeather" onSubmit={handleSubmit} className={className}>
         <input
