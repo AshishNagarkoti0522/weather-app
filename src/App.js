@@ -4,8 +4,8 @@ import ThemeToggle from './components/ThemeToggle';
 import SidebarToggle from './components/SidebarToggle';
 import IntroScreen from './components/IntroScreen';
 import WeatherDisplay from './components/WeatherDisplay';
-import Footer from './components/Footer';
 import './index.css';
+import Footer from './components/Footer';
 
 const weatherAPIKey = "6df2361bc8mshb9cc009348e5f7bp14f854jsn00f7237528e9";
 const geoAPIKey = "b54dd9fab610407b804b7c8dbed30a69";
@@ -26,38 +26,34 @@ function App() {
     }
   }, [showIntro]);
 
-  const startApp = async (inputCity) => {
-    const cityName = inputCity.trim();
-    if (!cityName) return alert("Please enter a city");
+  const startApp = async (inputCity) => {  const cityName = inputCity.trim();
+  if (!cityName) return alert("Please enter a city");
 
-    try {
-      const geoUrl = `https://api.opencagedata.com/geocode/v1/json?q=${encodeURIComponent(cityName)}&key=${geoAPIKey}`;
-      const geoRes = await fetch(geoUrl);
-      const geoData = await geoRes.json();
-      if (!geoData.results.length) throw new Error("City not found");
+  try {
+    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(cityName)}&appid=f0c14a2b617ee15e67b9c21cd5faee06&units=metric`);
+    const data = await response.json();
 
-      const { lat, lng } = geoData.results[0].geometry;
-      const weatherUrl = `https://weather-by-api-ninjas.p.rapidapi.com/v1/weather?lat=${lat}&lon=${lng}`;
-      const options = {
-        method: 'GET',
-        headers: {
-          'x-rapidapi-key': weatherAPIKey,
-          'x-rapidapi-host': 'weather-by-api-ninjas.p.rapidapi.com'
-        }
-      };
+    if (!data.main || !data.weather) throw new Error("Incomplete weather data");
 
-      const weatherRes = await fetch(weatherUrl, options);
-      const data = await weatherRes.json();
-      if (!data.temp) throw new Error("Weather data missing");
+    const weatherFormatted = {
+      temp: data.main.temp,
+      humidity: data.main.humidity,
+      feels_like: data.main.feels_like,
+      min_temp: data.main.temp_min,
+      max_temp: data.main.temp_max,
+      wind_speed: data.wind.speed,
+      condition: data.weather[0].description,
+    };
 
-      setWeatherData(data);
-      setCity(cityName);
-      setShowIntro(false);
-    } catch (err) {
-      console.error(err);
-      alert("Something went wrong. Please check the city name or try again.");
-    }
-  };
+    setWeatherData(weatherFormatted);
+    setCity(cityName);
+    setShowIntro(false);
+
+  } catch (err) {
+    console.error(err);
+    alert("Something went wrong. Please check the city name or try again.");
+  }
+};
 
   const resetWeather = () => {
     setCity("");

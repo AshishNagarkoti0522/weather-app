@@ -24,7 +24,7 @@ function Navbar({ startApp, resetWeather, className }) {
   const handleLogoClick = () => {
     resetWeather();
     setTimeout(() => {
-      window.scrollTo({ top: 0, behavior: "smooth" }); // thoda delay se scroll
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }, 50);
   };
 

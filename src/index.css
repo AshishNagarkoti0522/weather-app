@@ -393,7 +393,6 @@ footer p {
   transition: visibility 0.3s, opacity 0.3s;
 }
 
-
 #navbar.show, #getWeather.show {
   visibility: visible;
   opacity: 1;
@@ -458,17 +457,6 @@ footer p {
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
-/* .top-controls {
-  position: fixed;
-  top: 1rem;
-  left: 0;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  padding: 0 1rem;
-  z-index: 1002;
-} */
-
 .theme-toggle-container {
   display: flex;
   justify-content: space-between;
@@ -486,13 +474,9 @@ footer p {
 
 .theme-switch {
   --toggle-size: 18px;
-  /* the size is adjusted using font-size,
-     this is not transform scale,
-     so you can choose any size */
   --container-width: 4em;
   --container-height: 1.8em;
   --container-radius: 6.25em;
-  /* radius 0 - minecraft mode :) */
   --container-light-bg: #3D7EAE;
   --container-night-bg: #1D1F2C;
   --circle-container-diameter: 2.4em;
@@ -704,7 +688,6 @@ footer p {
   transition: transform 0.3s ease;
 }
 
-/* 🔹 Sidebar Buttons - Vertical Stack */
 .sidebar button {
   background: none;
   border: none;
@@ -724,7 +707,7 @@ footer p {
   color: #0000007d;
 }
 
-/* 🔹 Sidebar Close Icon */
+/* Sidebar Close Icon */
 .sidebar-close {
   position: absolute;
   top: 10px;
@@ -741,7 +724,7 @@ footer p {
   color: var(--text);
 }
 
-/* 🔹 Overlay Glass */
+/* Overlay Glass */
 .modal-overlay,
 .login-modal-overlay {
   position: fixed;
@@ -757,10 +740,9 @@ footer p {
   z-index: 9999;
 }
 
-/* 🔹 Modal Box - Slightly Less Transparent than Sidebar */
 .modal-content,
 .login-modal-box {
-  background: rgba(255, 255, 255, 0.25); /* slightly darker */
+  background: rgba(255, 255, 255, 0.25);
   border-radius: 16px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
   padding: 30px;
@@ -800,7 +782,7 @@ footer p {
   color: #ddd;
 }
 
-/* 🔹 Submit Button Same Size as Input */
+/* Submit Button Same Size as Input */
 .Submit {
   width: 100%;
   padding: 12px;
@@ -818,7 +800,7 @@ footer p {
   background-color: #0096c7;
 }
 
-/* 🔹 Modal Close Button (optional show icon) */
+/* Modal Close Button */
 .close {
   position: absolute;
   background-color: rgba(255, 255, 255, 0);
@@ -1056,7 +1038,6 @@ footer p {
     border: 1px solid rgba(200, 200, 200, 0.2);
     z-index: 999;
   }
-
 
   #logo {
     font-size: 1.1rem;
