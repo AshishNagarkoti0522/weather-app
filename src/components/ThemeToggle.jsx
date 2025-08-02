@@ -12,7 +12,7 @@ function ThemeToggle() {
   };
 
   return (
-    <div className="theme-toggle-container">
+    // <div className="theme-toggle-container">
       <label className="theme-switch">
         <input
           type="checkbox"
@@ -44,7 +44,7 @@ function ThemeToggle() {
           </div>
         </div>
       </label>
-    </div>
+    // </div>
   );
 }
 

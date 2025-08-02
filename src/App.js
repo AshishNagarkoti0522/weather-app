@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import ThemeToggle from './components/ThemeToggle';
+import SidebarToggle from './components/SidebarToggle';
 import IntroScreen from './components/IntroScreen';
 import WeatherDisplay from './components/WeatherDisplay';
 import Footer from './components/Footer';
 import './index.css';
-
 
 const weatherAPIKey = "6df2361bc8mshb9cc009348e5f7bp14f854jsn00f7237528e9";
 const geoAPIKey = "b54dd9fab610407b804b7c8dbed30a69";
@@ -66,20 +66,23 @@ function App() {
   };
 
   return (
-    <div className="app-wrapper">
-      <header>
-        <Navbar resetWeather={resetWeather} startApp={startApp} className={!showIntro ? "show" : ""}/>
-      </header>
-      <ThemeToggle />
-      {showIntro ? (
-        <IntroScreen startApp={startApp} />
-      ) : (
-        <main>
-          <WeatherDisplay city={city} weatherData={weatherData} />
-        </main>
-      )}
-      <Footer />
-    </div>
+      <div className="app-wrapper">
+        <header>
+          <Navbar resetWeather={resetWeather} startApp={startApp} className={!showIntro ? "show" : ""}/>
+        </header>
+        <div className="Toggles">
+          <ThemeToggle />
+          <SidebarToggle resetWeather={resetWeather} />
+        </div>
+        {showIntro ? (
+          <IntroScreen startApp={startApp} />
+        ) : (
+          <main>
+            <WeatherDisplay city={city} weatherData={weatherData} />
+          </main>
+        )}
+        <Footer />
+      </div>
   );
 }
 

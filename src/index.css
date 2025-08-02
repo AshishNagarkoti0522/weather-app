@@ -58,6 +58,37 @@ body.dark-mode #logo:hover {
   text-shadow: 0 1px 4px rgba(173, 216, 230, 0.4);
 }
 
+.dark-mode .sidebar {
+  background: rgba(0, 0, 0, 0.3);
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  color: #f1f1f1;
+}
+
+.dark-mode .sidebar button:hover {
+  color: #ffffff7d;
+}
+
+body.dark-mode .modal-content,
+body.dark-mode .login-modal-box {
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+body.dark-mode .modal-content input,
+body.dark-mode .login-modal-box input {
+  background-color: rgba(255, 255, 255, 0.15);
+  color: #fff;
+}
+
+body.dark-mode .Submit {
+  background-color: #0077b6;
+}
+
+body.dark-mode .Submit:hover {
+  background-color: #023e8a;
+}
+
 body.dark-mode #introScreen {
   background: transparent;
 }
@@ -427,11 +458,30 @@ footer p {
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
+/* .top-controls {
+  position: fixed;
+  top: 1rem;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1rem;
+  z-index: 1002;
+} */
+
 .theme-toggle-container {
-  display: inline-block;
-  position: relative;
-  top: 0.1rem;
-  left:2vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0.5rem 1rem;
+}
+
+.Toggles {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0 2vh;
 }
 
 .theme-switch {
@@ -637,6 +687,149 @@ footer p {
   transform: translateY(-50%);
 }
 
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 220px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 999;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease;
+}
+
+/* 🔹 Sidebar Buttons - Vertical Stack */
+.sidebar button {
+  background: none;
+  border: none;
+  color: var(--text);
+  font-size: 16px;
+  padding: 12px;
+  text-align: left;
+  cursor: pointer;
+  font-weight: 500;
+  transition: color 0.2s ease;
+  width: 100%;
+  display: block;
+}
+
+/* Hover */
+.sidebar button:hover {
+  color: #0000007d;
+}
+
+/* 🔹 Sidebar Close Icon */
+.sidebar-close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  color: var(--text);
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.hamburger-icon {
+  font-size: 1.8rem;
+  cursor: pointer;
+  z-index: 1100;
+  color: var(--text);
+}
+
+/* 🔹 Overlay Glass */
+.modal-overlay,
+.login-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(25, 25, 25, 0.3);
+  backdrop-filter: blur(6px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* 🔹 Modal Box - Slightly Less Transparent than Sidebar */
+.modal-content,
+.login-modal-box {
+  background: rgba(255, 255, 255, 0.25); /* slightly darker */
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  padding: 30px;
+  width: 90%;
+  max-width: 400px;
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  position: relative;
+}
+
+/* Heading */
+.modal-content h2,
+.login-modal-box h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+/* Input Fields - Same width as buttons */
+.modal-content input,
+.login-modal-box input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  font-size: 15px;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  box-sizing: border-box;
+}
+
+.modal-content input::placeholder,
+.login-modal-box input::placeholder {
+  color: #ddd;
+}
+
+/* 🔹 Submit Button Same Size as Input */
+.Submit {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background-color: #00b4d8;
+  color: #fff;
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.Submit:hover {
+  background-color: #0096c7;
+}
+
+/* 🔹 Modal Close Button (optional show icon) */
+.close {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0);
+  top: 12px;
+  right: 16px;
+  font-size: 24px;
+  border: none;
+  color: var(--text);
+  cursor: pointer;
+}
+
 #fetchWeather {
   appearance: none;
   border-radius: 12px;
@@ -785,6 +978,29 @@ footer p {
 
 @media (max-width: 600px) {
 
+  .sidebar {
+    width: 180px;
+    padding: 16px;
+  }
+
+  .modal-content,
+  .login-modal-box {
+    width: 90%;
+    padding: 20px;
+  }
+
+  .modal-content h2,
+  .login-modal-box h2 {
+    font-size: 20px;
+  }
+
+  .modal-content input,
+  .login-modal-box input,
+  .Submit {
+    font-size: 14px;
+    padding: 10px;
+  }
+
   #introScreen {
     height: 70vh;
     transition: opacity 0.6s ease;
@@ -860,13 +1076,8 @@ footer p {
     display: none;
   }
 
-  .theme-toggle-container {
-    display: inline-block;
-    margin: auto;
-    position: absolute;
-    top: 1rem;
-    left: auto;
-    right: 1rem;
+  .Toggles {
+    padding-top: 2vh;
   }
 
   .weather-cards {
